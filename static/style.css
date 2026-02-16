@@ -4,21 +4,29 @@
     box-sizing:border-box;
 }
 
+/* ======================
+   BODY + BACKGROUND
+====================== */
 body {
     font-family: Arial, sans-serif;
-    background:#111;
+    background: linear-gradient(135deg, #111, #181818);
     color:white;
     transition:0.3s ease;
 }
 
+/* ======================
+   LAYOUT
+====================== */
 .layout {
     display:flex;
     min-height:100vh;
 }
 
-/* Sidebar */
+/* ======================
+   SIDEBAR
+====================== */
 .sidebar {
-    width:220px;
+    width:230px;
     background:#1e1e1e;
     padding:25px 20px;
     display:flex;
@@ -27,10 +35,17 @@ body {
 }
 
 .sidebar h2 {
-    margin-bottom:25px;
+    margin-bottom:30px;
     color:#00ff99;
     font-weight:bold;
     letter-spacing:1px;
+    animation:glow 2s infinite alternate;
+}
+
+/* Logo Glow Animation */
+@keyframes glow {
+    from { text-shadow:0 0 5px #00ff99; }
+    to { text-shadow:0 0 20px #00ff99; }
 }
 
 .sidebar a,
@@ -44,7 +59,7 @@ body {
     cursor:pointer;
     text-align:left;
     border-radius:6px;
-    transition:0.2s ease;
+    transition:0.3s ease;
 }
 
 .sidebar a:hover,
@@ -53,13 +68,24 @@ body {
     color:#00ff99;
 }
 
-/* Main */
+/* ======================
+   MAIN CONTENT
+====================== */
 .main {
     flex:1;
     padding:35px;
+    animation:fadeIn 0.6s ease;
 }
 
-/* Add Form */
+/* Smooth Page Load */
+@keyframes fadeIn {
+    from { opacity:0; transform:translateY(10px); }
+    to { opacity:1; transform:translateY(0); }
+}
+
+/* ======================
+   ADD FORM
+====================== */
 .add-form {
     display:flex;
     gap:10px;
@@ -70,26 +96,33 @@ body {
 .add-form select {
     padding:10px;
     border:none;
-    border-radius:6px;
+    border-radius:8px;
     background:#222;
     color:white;
 }
 
+/* ======================
+   BUTTONS (Neon Glow)
+====================== */
 button {
     padding:10px 15px;
     border:none;
-    border-radius:6px;
+    border-radius:8px;
     background:#00ff99;
     font-weight:bold;
     cursor:pointer;
-    transition:0.2s ease;
+    transition:0.3s ease;
+    box-shadow:0 0 10px #00ff9950;
 }
 
 button:hover {
-    opacity:0.8;
+    box-shadow:0 0 20px #00ff99;
+    transform:translateY(-2px);
 }
 
-/* Stats */
+/* ======================
+   STATS CARDS
+====================== */
 .stats {
     display:flex;
     gap:20px;
@@ -102,11 +135,7 @@ button:hover {
     border-radius:12px;
     flex:1;
     text-align:center;
-    transition:0.2s ease;
-}
-
-.card:hover {
-    transform:translateY(-3px);
+    transition:0.3s ease;
 }
 
 .card h3 {
@@ -119,31 +148,72 @@ button:hover {
     font-weight:bold;
 }
 
-/* Chart */
+.card:hover {
+    transform:translateY(-4px);
+    box-shadow:0 0 15px #00ff9930;
+}
+
+/* ======================
+   CHART BOX
+====================== */
 .chart-box {
     background:#222;
     padding:25px;
     border-radius:12px;
     margin-bottom:25px;
+    transition:0.3s ease;
 }
 
-/* Habit Item */
+.chart-box:hover {
+    box-shadow:0 0 15px #00ff9930;
+}
+
+/* ======================
+   HABIT ITEM
+====================== */
 .habit-item {
     background:#222;
     padding:18px;
     margin-bottom:12px;
     border-radius:12px;
     display:flex;
-    justify-content:space-between;
-    align-items:center;
-    transition:0.2s ease;
+    flex-direction:column;
+    transition:0.3s ease;
 }
 
 .habit-item:hover {
-    background:#2a2a2a;
+    transform:translateY(-4px);
+    box-shadow:0 0 15px #00ff9930;
 }
 
-/* Badge */
+/* Habit Header Row */
+.habit-top {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* ======================
+   PROGRESS BAR
+====================== */
+.progress-bar {
+    width:100%;
+    height:6px;
+    background:#333;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+.progress-fill {
+    height:100%;
+    background:#00ff99;
+    border-radius:10px;
+    transition:0.4s ease;
+}
+
+/* ======================
+   BADGE
+====================== */
 .badge {
     background:#00ff99;
     color:black;
@@ -153,7 +223,9 @@ button:hover {
     font-weight:bold;
 }
 
-/* Actions */
+/* ======================
+   ACTION BUTTONS
+====================== */
 .actions a {
     margin-left:8px;
     text-decoration:none;
@@ -161,7 +233,7 @@ button:hover {
     border-radius:6px;
     font-weight:bold;
     font-size:13px;
-    transition:0.2s;
+    transition:0.3s;
 }
 
 .done { background:orange; color:black; }
@@ -172,7 +244,9 @@ button:hover {
     opacity:0.8;
 }
 
-/* Auth */
+/* ======================
+   AUTH CONTAINER
+====================== */
 .auth-container {
     max-width:380px;
     margin:120px auto;
@@ -187,36 +261,14 @@ button:hover {
     padding:10px;
     margin:12px 0;
     border:none;
-    border-radius:6px;
+    border-radius:8px;
     background:#111;
     color:white;
 }
 
-/* Profile */
-.profile-card {
-    display:flex;
-    align-items:center;
-    gap:20px;
-    background:#222;
-    padding:25px;
-    border-radius:12px;
-    margin-bottom:30px;
-}
-
-.profile-avatar {
-    width:70px;
-    height:70px;
-    background:#00ff99;
-    color:black;
-    font-size:28px;
-    font-weight:bold;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-}
-
-/* Light Mode */
+/* ======================
+   LIGHT MODE
+====================== */
 .light-mode {
     background:#f4f4f4;
     color:black;
@@ -226,8 +278,7 @@ button:hover {
 .light-mode .card,
 .light-mode .habit-item,
 .light-mode .chart-box,
-.light-mode .auth-container,
-.light-mode .profile-card {
+.light-mode .auth-container {
     background:white;
     color:black;
 }
@@ -236,14 +287,108 @@ button:hover {
     color:black;
 }
 
-/* Responsive */
+/* ======================
+   RESPONSIVE
+====================== */
 @media(max-width:768px){
-    .layout{flex-direction:column;}
-    .sidebar{
+    .layout { flex-direction:column; }
+    .sidebar {
         width:100%;
         flex-direction:row;
         justify-content:space-around;
     }
-    .stats{flex-direction:column;}
-    .add-form{flex-direction:column;}
+    .stats { flex-direction:column; }
+    .add-form { flex-direction:column; }
+}
+/* ======================
+   PROFILE PAGE
+====================== */
+
+.page-header {
+    margin-bottom:25px;
+}
+
+.subtitle {
+    color:#aaa;
+    margin-top:5px;
+}
+
+.profile-card {
+    display:flex;
+    align-items:center;
+    gap:20px;
+    background:#222;
+    padding:30px;
+    border-radius:14px;
+    margin-bottom:30px;
+    transition:0.3s ease;
+}
+
+.profile-card:hover {
+    box-shadow:0 0 20px #00ff9930;
+    transform:translateY(-3px);
+}
+
+.profile-avatar {
+    width:80px;
+    height:80px;
+    background:#00ff99;
+    color:black;
+    font-size:32px;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+}
+
+.profile-info h2 {
+    margin-bottom:5px;
+}
+
+.joined-date {
+    color:#aaa;
+}
+
+.section-divider {
+    height:1px;
+    background:#333;
+    margin:30px 0;
+}
+
+.section-title {
+    margin-bottom:15px;
+    color:#00ff99;
+}
+
+.profile-actions {
+    margin-top:30px;
+    display:flex;
+    gap:15px;
+}
+
+.btn {
+    padding:10px 18px;
+    border-radius:8px;
+    background:#00ff99;
+    color:black;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s ease;
+    box-shadow:0 0 10px #00ff9950;
+}
+
+.btn:hover {
+    box-shadow:0 0 20px #00ff99;
+    transform:translateY(-2px);
+}
+
+.btn.danger {
+    background:#ff4d4d;
+    color:white;
+    box-shadow:none;
+}
+
+.btn.danger:hover {
+    background:#ff3333;
 }
