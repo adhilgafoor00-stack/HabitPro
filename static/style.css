@@ -1,164 +1,150 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
-/* ---------------- BODY ---------------- */
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #111;
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: Arial, sans-serif;
+    background:#111;
+    color:white;
 }
 
-/* ---------------- CONTAINERS ---------------- */
-.box, .container {
-    background: #1e1e1e;
-    padding: 30px;
-    border-radius: 12px;
-    width: 350px;
-    box-shadow: 0 0 20px rgba(0, 255, 153, 0.1);
+.layout {
+    display:flex;
+    min-height:100vh;
 }
 
-/* ---------------- HEADINGS ---------------- */
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #00ff99;
+/* Sidebar */
+.sidebar {
+    width:220px;
+    background:#1e1e1e;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
 }
 
-/* ---------------- INPUTS ---------------- */
-input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 6px;
-    background: #2a2a2a;
-    color: white;
-    outline: none;
+.sidebar h2 {
+    margin-bottom:20px;
+    color:#00ff99;
 }
 
-input:focus {
-    border: 1px solid #00ff99;
+.sidebar a, .sidebar button {
+    margin:8px 0;
+    text-decoration:none;
+    color:white;
+    background:none;
+    border:none;
+    cursor:pointer;
+    text-align:left;
 }
 
-/* ---------------- BUTTONS ---------------- */
+/* Main */
+.main {
+    flex:1;
+    padding:30px;
+}
+
+.add-form {
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.add-form input, select {
+    padding:10px;
+    border:none;
+    border-radius:6px;
+}
+
 button {
-    width: 100%;
-    padding: 12px;
-    background: #00ff99;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s ease;
+    padding:10px 15px;
+    border:none;
+    border-radius:6px;
+    background:#00ff99;
+    cursor:pointer;
 }
 
-button:hover {
-    background: #00cc77;
-    transform: scale(1.03);
+.stats {
+    display:flex;
+    gap:20px;
+    margin:20px 0;
 }
 
-/* ---------------- HABITS ---------------- */
-.habits {
-    margin-top: 20px;
-    max-height: 300px;
-    overflow-y: auto;
+.card {
+    background:#222;
+    padding:20px;
+    border-radius:10px;
+    flex:1;
+    text-align:center;
 }
 
-.habit {
-    background: #2b2b2b;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 8px;
-    transition: 0.3s ease;
+.chart-box {
+    background:#222;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:20px;
 }
 
-.habit:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
+.habit-item {
+    background:#222;
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.habit h3 {
-    margin-bottom: 5px;
+.badge {
+    background:#00ff99;
+    color:black;
+    padding:3px 8px;
+    border-radius:5px;
+    font-size:12px;
 }
 
-/* ---------------- DONE BUTTON ---------------- */
-.done-btn {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 6px 10px;
-    background: orange;
-    color: black;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: 0.3s ease;
+.actions a {
+    margin-left:8px;
+    text-decoration:none;
+    padding:5px 8px;
+    border-radius:5px;
 }
 
-.done-btn:hover {
-    background: gold;
+.done { background:orange; color:black; }
+.edit { background:blue; color:white; }
+.delete { background:red; color:white; }
+
+.auth-container {
+    max-width:350px;
+    margin:100px auto;
+    background:#222;
+    padding:30px;
+    border-radius:10px;
+    text-align:center;
 }
 
-/* ---------------- LINKS ---------------- */
-a {
-    color: #00ff99;
-    text-decoration: none;
+.auth-container input {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:none;
+    border-radius:6px;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
-/* ---------------- LIGHT MODE ---------------- */
+/* Dark Mode */
 .light-mode {
-    background: #f4f4f4;
-    color: black;
+    background:#f4f4f4;
+    color:black;
 }
 
-.light-mode .box,
-.light-mode .container {
-    background: white;
-    color: black;
+.light-mode .sidebar,
+.light-mode .card,
+.light-mode .habit-item,
+.light-mode .chart-box,
+.light-mode .auth-container {
+    background:white;
+    color:black;
 }
 
-.light-mode input {
-    background: #eee;
-    color: black;
-}
-
-.light-mode .habit {
-    background: #ddd;
-}
-
-/* ---------------- POPUP MESSAGE ---------------- */
-.popup-message {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #00ff99;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: bold;
-    animation: fadeInOut 2s ease forwards;
-}
-
-@keyframes fadeInOut {
-    0% { opacity: 0; transform: translateY(10px); }
-    20% { opacity: 1; transform: translateY(0); }
-    80% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
-/* ---------------- RESPONSIVE ---------------- */
-@media (max-width: 400px) {
-    .box, .container {
-        width: 90%;
-    }
+/* Responsive */
+@media(max-width:768px){
+    .layout{flex-direction:column;}
+    .sidebar{width:100%; flex-direction:row; justify-content:space-around;}
 }

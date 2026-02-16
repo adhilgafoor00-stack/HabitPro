@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Habit</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="auth-container">
+    <h2>Edit Habit</h2>
+    <form method="POST">
+        <input type="text" name="name" value="{{ habit.name }}" required>
+
+        <select name="category">
+            <option value="Health">Health</option>
+            <option value="Study">Study</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Coding">Coding</option>
+            <option value="Personal">Personal</option>
+        </select>
+
+        <button type="submit">Update</button>
+    </form>
+</div>
+</body>
+</html>

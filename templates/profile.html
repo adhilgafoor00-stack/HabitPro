@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="auth-container">
+    <h2>Profile</h2>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Joined:</strong> {{ user.created_at }}</p>
+    <a href="/dashboard">Back to Dashboard</a>
+</div>
+</body>
+</html>
