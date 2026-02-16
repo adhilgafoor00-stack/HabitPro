@@ -42,27 +42,6 @@ Track your habits, monitor progress, and stay consistent with a clean neon-inspi
 
 ---
 
-## 📂 Project Structure
-
-HabitPro/
-│
-├── app.py
-├── database.db
-│
-├── templates/
-│   ├── login.html
-│   ├── register.html
-│   ├── dashboard.html
-│   ├── profile.html
-│
-├── static/
-│   ├── style.css
-│   ├── script.js
-│
-└── README.md
-
----
-
 ## 🔥 Future Improvements
 
 - Streak counter system
