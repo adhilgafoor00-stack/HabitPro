@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Your Habits</h2>
+
+        <form method="POST" action="/add_habit">
+            <input type="text" name="habit" placeholder="New Habit" required>
+            <button type="submit">Add</button>
+        </form>
+
+        <div class="habits">
+            {% for habit in habits %}
+            <div class="habit">
+                <h3>{{ habit.name }}</h3>
+                <p>🔥 Streak: {{ habit.streak }}</p>
+                <a href="/complete/{{ habit.id }}" class="done-btn">Mark Done</a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
