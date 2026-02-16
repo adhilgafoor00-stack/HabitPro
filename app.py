@@ -259,14 +259,39 @@ def profile():
         return redirect("/login")
 
     conn = get_db()
+
+    # Get user info
     user = conn.execute(
         "SELECT * FROM users WHERE id=?",
         (session["user_id"],)
     ).fetchone()
+
+    # Total habits
+    total_habits = conn.execute(
+        "SELECT COUNT(*) FROM habits WHERE user_id=?",
+        (session["user_id"],)
+    ).fetchone()[0]
+
+    # Total completions
+    total_completions = conn.execute('''
+        SELECT COUNT(*) FROM completions
+        JOIN habits ON habits.id = completions.habit_id
+        WHERE habits.user_id=?
+    ''', (session["user_id"],)).fetchone()[0]
+
+    # Account age calculation
+    join_date = datetime.strptime(user['created_at'], "%Y-%m-%d").date()
+    account_age = (date.today() - join_date).days
+
     conn.close()
 
-    return render_template("profile.html", user=user)
-
+    return render_template(
+        "profile.html",
+        user=user,
+        total_habits=total_habits,
+        total_completions=total_completions,
+        account_age=account_age
+    )
 
 # ---------------- LOGOUT ----------------
 @app.route('/logout')
